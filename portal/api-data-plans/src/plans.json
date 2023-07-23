@@ -1,0 +1,6 @@
+[
+    { "id": "cdc25587-a88c-428e-9f96-5545bb329a73", "name": "Start", "download": "10", "upload": "2", "price": "39.00" },
+    { "id": "5eae8f27-f3d2-43f2-b8f7-13c47ad45ea9", "name": "Advanced", "download": "50",  "upload": "10", "price": "49.00" },
+    { "id": "132b7d56-8a57-47f8-a4aa-a85816984988", "name": "Complete", "download": "100", "upload": "30", "price": "75.50" },
+    { "id": "cdc25587-a88c-428e-9f96-5545bb329a73", "name": "UltraMax", "download": "300",  "upload": "45", "price": "99.99" }
+]
