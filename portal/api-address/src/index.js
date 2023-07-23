@@ -17,12 +17,12 @@ function getStreetByPostCode(postCode) {
     return streets[index === streets.length ? streets.length - 1 : index]
 }
 
-app.get('/getAddressByPostCode', (req, res) => {
+app.get('/getAddress', (req, res) => {
     const token = req.header('Authorization');
     const { postCode } = req.query
 
     if(!token) {
-        return res.status(401).send("missing X-TOKEN header")
+        return res.status(401).send("missing authorization bearer header")
     }
     const parsedToken = token.split(' ')[1]
     if(parsedToken !== process.env.APP_SECRET_TOKEN){
