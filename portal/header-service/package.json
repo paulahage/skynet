@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-ui": "cd ../header-ui && npm run build && cd ../header-service",
+    "copy-ui": "cp -r ../header-ui/build ./header-dist",
+    "build": "npm run build-ui && npm run copy-ui"
   },
   "keywords": [],
   "author": "",
