@@ -1,5 +1,5 @@
-# API Address
-API for getting address based in a postcode
+# API Data Plans
+API for getting the data plans based in a postcode
 
 ## Endpoints:
 - [GET] `/getPlans`
