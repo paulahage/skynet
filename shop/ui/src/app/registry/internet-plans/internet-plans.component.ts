@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { packages } from './internet-packs';
 
 @Component({
@@ -7,11 +7,10 @@ import { packages } from './internet-packs';
   styleUrls: ['./internet-plans.component.scss'],
 })
 export class InternetPlansComponent {
+  @Input() isRegistryOk: boolean = false;
+  
   internetPackages = packages;
   selectedPackageId: number | null = null;
-  previousCard: ElementRef | null = null;
-
-  @ViewChild('card', { static: false }) card!: ElementRef<HTMLDivElement>;
 
   selectPackage(packageId: number) {
     this.selectedPackageId = packageId;
