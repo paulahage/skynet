@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShoppingViewComponent } from './shopping-view/shopping-view.component';
 import { RegistryConfirmComponent } from './shopping-view/registry/registry-confirm/registry-confirm.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoadingComponent } from './loading/loading.component';
     ShoppingViewComponent,
     RegistryConfirmComponent,
     LoadingComponent,
+    ShoppingCartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
