@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+
+.discount-label {
+  background-color: $color-black;
+  color: $color-white;
+}
+
+.card_container:hover {
+  border: 1px solid $color-black;
+}
