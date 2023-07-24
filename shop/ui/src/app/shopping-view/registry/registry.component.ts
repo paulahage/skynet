@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { ShoppingService } from 'src/app/services/shopping.service';
+
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
@@ -8,7 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegistryComponent {
   registryForm!: FormGroup;
-  isRegistryOk: boolean = false;
+
+  constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
     this.registryForm = new FormGroup({
@@ -16,14 +19,22 @@ export class RegistryComponent {
       houseNumber: new FormControl('', Validators.required),
       addition: new FormControl(''),
     });
-
-    this.registryForm.get('postCode')?.valueChanges.subscribe((value) => {
-      console.log('postCode:', value);
-    });
   }
 
   onSubmit() {
     console.log('ok');
-    this.isRegistryOk = true;
+    this.shoppingService.isLoading = true;
+    setTimeout(() => {
+      this.shoppingService.isRegistryOk = true;
+      this.shoppingService.isLoading = false;
+    }, 2000);
+  }
+
+  get isRegistryOk() {
+    return this.shoppingService.isRegistryOk;
+  }
+
+  get isLoading() {
+    return this.shoppingService.isLoading;
   }
 }

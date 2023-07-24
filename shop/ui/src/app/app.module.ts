@@ -3,22 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InternetPlansComponent } from './registry/internet-plans/internet-plans.component';
-import { RegistryComponent } from './registry/registry.component';
+import { InternetPlansComponent } from './shopping-view/internet-plans/internet-plans.component';
+import { RegistryComponent } from './shopping-view/registry/registry.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShoppingViewComponent } from './shopping-view/shopping-view.component';
+import { RegistryConfirmComponent } from './shopping-view/registry/registry-confirm/registry-confirm.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InternetPlansComponent,
-    RegistryComponent
+    RegistryComponent,
+    ShoppingViewComponent,
+    RegistryConfirmComponent,
+    LoadingComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

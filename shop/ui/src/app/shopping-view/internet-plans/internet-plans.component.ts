@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { packages } from './internet-packs';
+import { ShoppingService } from 'src/app/services/shopping.service';
 
 @Component({
   selector: 'app-internet-plans',
@@ -7,10 +9,10 @@ import { packages } from './internet-packs';
   styleUrls: ['./internet-plans.component.scss'],
 })
 export class InternetPlansComponent {
-  @Input() isRegistryOk: boolean = false;
-  
   internetPackages = packages;
   selectedPackageId: number | null = null;
+
+  constructor(private shoppingService: ShoppingService) {}
 
   selectPackage(packageId: number) {
     this.selectedPackageId = packageId;
@@ -18,5 +20,9 @@ export class InternetPlansComponent {
 
   isPackageSelected(packageId: number): boolean {
     return this.selectedPackageId === packageId;
+  }
+
+  get isRegistryOk() {
+    return this.shoppingService.isRegistryOk
   }
 }
