@@ -26,6 +26,7 @@ export class RegistryComponent {
     this.shoppingService.isLoading = true;
     setTimeout(() => {
       this.shoppingService.isRegistryOk = true;
+      this.registryForm.reset();
       this.shoppingService.isLoading = false;
     }, 2000);
   }
