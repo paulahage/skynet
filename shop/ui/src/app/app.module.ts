@@ -10,6 +10,7 @@ import { ShoppingViewComponent } from './shopping-view/shopping-view.component';
 import { RegistryConfirmComponent } from './shopping-view/registry/registry-confirm/registry-confirm.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ConfirmDataComponent } from './shopping-view/confirm-data/confirm-data.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     RegistryConfirmComponent,
     LoadingComponent,
     ShoppingCartComponent,
+    ConfirmDataComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
