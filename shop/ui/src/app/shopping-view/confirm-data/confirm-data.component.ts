@@ -37,8 +37,9 @@ export class ConfirmDataComponent {
     setTimeout(() => {
       this.personalDataForm.reset();
       this.shoppingService.isLoading = false;
+      this.shoppingService.isRegistryOk = false;
       this.shoppingService.isPaymentView = true;
-      this.router.navigate(['confirm_personal_data']);
+      this.router.navigate(['payment']);
     }, 1000);
   }
 

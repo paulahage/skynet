@@ -1,0 +1,85 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <form [formGroup]="paymentForm" (ngSubmit)="onPayment()">
+      <h5>Payment details</h5>
+      <div class="row mt-3">
+        <div class="input-group mb-3">
+          <div class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="cardNumber"
+              formControlName="cardNumber"
+            />
+            <label for="cardNumber">CARD NUMBER</label>
+          </div>
+          <span class="input-group-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-credit-card"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"
+              />
+              <path
+                d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col mt-2">
+          <div class="form-floating">
+            <input
+              type="month"
+              class="form-control"
+              id="expirationDate"
+              formControlName="expirationDate"
+            />
+            <label for="expirationDate" class="form-label"
+              >EXPIRATION DATE</label
+            >
+          </div>
+        </div>
+        <div class="col mt-2">
+          <div class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="cvCode"
+              formControlName="cvCode"
+            />
+            <label for="cvCode" class="form-label">CV CODE</label>
+          </div>
+        </div>
+      </div>
+      <div class="rol mt-3">
+        <div class="col mt-2">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="cardHolder"
+              formControlName="cardHolder"
+            />
+            <label for="cardHolder">CARD OWNER</label>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn btn-success mt-4"
+        type="submit"
+        style="width: 100%"
+        [disabled]="!paymentForm.valid"
+      >
+        Confirm payment
+      </button>
+    </form>
+  </div>
+  <app-loading *ngIf="isLoading"></app-loading>
+</div>

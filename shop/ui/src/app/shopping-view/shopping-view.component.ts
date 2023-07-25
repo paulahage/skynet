@@ -13,4 +13,8 @@ export class ShoppingViewComponent {
   get isConfirmPersonalData() {
     return this.shoppingService.isConfirmPersonalData;
   }
+
+  get isPaymentView() {
+    return this.shoppingService.isPaymentView;
+  }
 }
