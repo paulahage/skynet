@@ -6,7 +6,7 @@
   </p>
   <div class="row">
     <div class="col-md-4" *ngFor="let package of internetPackages">
-      <a style="cursor: pointer" (click)="selectPackage(package.id)">
+      <a style="cursor: pointer" (click)="selectPackage(package)">
         <div
           class="card card_container"
           [ngClass]="{

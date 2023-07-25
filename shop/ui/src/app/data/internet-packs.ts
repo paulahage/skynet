@@ -9,6 +9,8 @@ export const packages = [
       'Internet security',
       'Installation help',
     ],
+    label: false,
+    price: '23,90',
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ export const packages = [
       'Internet security',
       'Installation help',
     ],
+    label: false,
+    price: '30,90',
   },
   {
     id: 3,
@@ -32,5 +36,12 @@ export const packages = [
       'Installation help',
     ],
     label: true,
+    price: '60,90',
   },
+];
+
+export const internetInstallationHelp = [
+  'Wifi scan',
+  'Super strong modem',
+  'Mechanic',
 ];
