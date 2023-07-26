@@ -23,7 +23,7 @@ export class ShoppingCartComponent {
 
   ngOnInit() {
     this.subscription = this.shoppingService.selectedPackage.subscribe(
-      (itPackage) => (this.internetPackage = itPackage)
+      (itPackage) => (this.internetPackage = itPackage!)
     );
   }
 

@@ -13,10 +13,9 @@ export class InternetPlansComponent {
   internetPackages = packages;
   selectedPackageId: number | null = null;
 
-  constructor(private shoppingService: ShoppingService) {}
-
-  ngOnInit() {
-    this.selectedPackageId = this.internetPackages.length > 0 ? this.internetPackages[2].id : null;
+  constructor(private shoppingService: ShoppingService) {
+    this.selectedPackageId =
+      this.internetPackages.length > 0 ? this.internetPackages[2].id : null;
     this.shoppingService.selectedPackage.next(this.internetPackages[2]);
   }
 
