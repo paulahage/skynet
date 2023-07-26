@@ -1,5 +1,11 @@
-<app-registry></app-registry>
-<app-confirm-data *ngIf="isConfirmPersonalData"></app-confirm-data>
-<app-payment *ngIf="isPaymentView"></app-payment>
-
-
+<div class="row">
+  <div class="col-md-8">
+    <app-registry *ngIf="!isConfirmPersonalData && ! isPaymentView"></app-registry>
+    <app-confirm-data *ngIf="isConfirmPersonalData"></app-confirm-data>
+    <app-payment *ngIf="isPaymentView && !isConfirmPersonalData"></app-payment>
+  </div>
+  <div class="col-md-4 mt-3">
+    <app-shopping-cart></app-shopping-cart>
+  </div>
+</div>
+<app-payment-success></app-payment-success>

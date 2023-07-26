@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ShoppingService } from '../services/shopping.service';
 import { InternetPackage } from '../models/internet-packs.model';
 import { internetInstallationHelp } from '../data/internet-packs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +18,8 @@ export class ShoppingCartComponent {
 
   constructor(
     private shoppingService: ShoppingService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -35,8 +36,12 @@ export class ShoppingCartComponent {
     return this.shoppingService.isConfirmPersonalData;
   }
 
+  get isPaymentView() {
+    return this.shoppingService.isPaymentView;
+  }
+
   continueShopping() {
-    this.router.navigate(['confirm_personal_data']);
+    this.router.navigate(['confirm_personal_data'], { relativeTo: this.route });
     this.shoppingService.isConfirmPersonalData = true;
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistryInformation } from 'src/app/models/user.model';
 
 import { ShoppingService } from 'src/app/services/shopping.service';
@@ -17,7 +17,8 @@ export class ConfirmDataComponent {
 
   constructor(
     private shoppingService: ShoppingService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -38,8 +39,9 @@ export class ConfirmDataComponent {
       this.personalDataForm.reset();
       this.shoppingService.isLoading = false;
       this.shoppingService.isRegistryOk = false;
+      this.shoppingService.isConfirmPersonalData = false;
       this.shoppingService.isPaymentView = true;
-      this.router.navigate(['payment']);
+      this.router.navigate(['payment'], {relativeTo: this.route});
     }, 1000);
   }
 
