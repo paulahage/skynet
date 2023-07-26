@@ -12,7 +12,8 @@ export class ShoppingService {
   isLoading: boolean = false;
   isConfirmPersonalData: boolean = false;
   isPaymentView: boolean = false;
-  isPaymentFailed: boolean = true;
+  isPaymentFailed: boolean = false;
+  isPaymentSuccess: boolean = false;
 
   selectedPackage = new BehaviorSubject<InternetPackage | null>({
     id: 3,
@@ -27,7 +28,7 @@ export class ShoppingService {
     label: true,
     price: '60,90',
   });
-  
+
   registryInfos = new Subject<RegistryInformation>();
 
   constructor() {}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ShoppingService } from 'src/app/services/shopping.service';
 
@@ -15,7 +15,8 @@ export class PaymentComponent {
 
   constructor(
     private shoppingService: ShoppingService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -37,10 +38,13 @@ export class PaymentComponent {
       setTimeout(() => {
         this.paymentForm.reset();
         this.shoppingService.isLoading = false;
-        this.router.navigate(['']);
+        this.shoppingService.isPaymentSuccess = true;
+        this.router.navigate(['../payment_success'], {
+          relativeTo: this.route,
+        });
       }, 1000);
     } else {
-      return
+      return;
     }
   }
 

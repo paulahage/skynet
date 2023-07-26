@@ -10,11 +10,7 @@ import { ShoppingService } from '../services/shopping.service';
 export class ShoppingViewComponent {
   constructor(private shoppingService: ShoppingService) {}
 
-  get isConfirmPersonalData() {
-    return this.shoppingService.isConfirmPersonalData;
-  }
-
-  get isPaymentView() {
-    return this.shoppingService.isPaymentView;
+  get isPaymentSuccess() {
+    return this.shoppingService.isPaymentSuccess;
   }
 }
