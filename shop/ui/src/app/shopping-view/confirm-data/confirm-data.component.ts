@@ -33,7 +33,6 @@ export class ConfirmDataComponent {
   }
 
   onSubmit() {
-    console.log('submit the personal information');
     this.shoppingService.isLoading = true;
     setTimeout(() => {
       this.personalDataForm.reset();

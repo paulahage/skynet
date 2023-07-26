@@ -22,7 +22,6 @@ export class RegistryComponent {
   }
 
   onSubmit() {
-    console.log('ok');
     this.shoppingService.registryInfos.next(this.registryForm.value);
     this.shoppingService.isLoading = true;
     setTimeout(() => {

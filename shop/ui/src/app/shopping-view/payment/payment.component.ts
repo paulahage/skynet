@@ -31,7 +31,6 @@ export class PaymentComponent {
   }
 
   onPayment() {
-    console.log('payment ok');
 
     if (!this.isPaymentFailed) {
       this.shoppingService.isLoading = true;
@@ -39,6 +38,7 @@ export class PaymentComponent {
         this.paymentForm.reset();
         this.shoppingService.isLoading = false;
         this.shoppingService.isPaymentSuccess = true;
+
         this.router.navigate(['../payment_success'], {
           relativeTo: this.route,
         });

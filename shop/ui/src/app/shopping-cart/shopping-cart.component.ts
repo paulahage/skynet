@@ -41,7 +41,15 @@ export class ShoppingCartComponent {
   }
 
   continueShopping() {
-    this.router.navigate(['confirm_personal_data'], { relativeTo: this.route });
-    this.shoppingService.isConfirmPersonalData = true;
+    this.shoppingService.isLoading = true;
+
+    setTimeout(() => {
+      this.shoppingService.isLoading = false;
+      this.shoppingService.isConfirmPersonalData = true;
+
+      this.router.navigate(['confirm_personal_data'], {
+        relativeTo: this.route,
+      });
+    }, 1000);
   }
 }
