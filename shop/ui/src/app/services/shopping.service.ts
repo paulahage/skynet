@@ -12,6 +12,8 @@ export class ShoppingService {
   isLoading: boolean = false;
   isConfirmPersonalData: boolean = false;
   isPaymentView: boolean = false;
+  isPaymentFailed: boolean = true;
+
   selectedPackage = new Subject<InternetPackage>();
   registryInfos = new Subject<RegistryInformation>();
 

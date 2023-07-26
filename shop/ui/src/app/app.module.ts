@@ -12,6 +12,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ConfirmDataComponent } from './shopping-view/confirm-data/confirm-data.component';
 import { PaymentComponent } from './shopping-view/payment/payment.component';
+import { PaymentErrorComponent } from './shopping-view/payment/payment-error/payment-error.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PaymentComponent } from './shopping-view/payment/payment.component';
     ShoppingCartComponent,
     ConfirmDataComponent,
     PaymentComponent,
+    PaymentErrorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

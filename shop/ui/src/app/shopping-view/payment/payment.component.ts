@@ -11,6 +11,7 @@ import { ShoppingService } from 'src/app/services/shopping.service';
 })
 export class PaymentComponent {
   paymentForm!: FormGroup;
+  isPaymentFailed: boolean = false;
 
   constructor(
     private shoppingService: ShoppingService,
@@ -24,16 +25,23 @@ export class PaymentComponent {
       cvCode: new FormControl(null, Validators.required),
       cardHolder: new FormControl('', Validators.required),
     });
+
+    this.isPaymentFailed = this.shoppingService.isPaymentFailed;
   }
 
   onPayment() {
     console.log('payment ok');
-    this.shoppingService.isLoading = true;
-    setTimeout(() => {
-      this.paymentForm.reset();
-      this.shoppingService.isLoading = false;
-      this.router.navigate(['']);
-    }, 1000);
+
+    if (!this.isPaymentFailed) {
+      this.shoppingService.isLoading = true;
+      setTimeout(() => {
+        this.paymentForm.reset();
+        this.shoppingService.isLoading = false;
+        this.router.navigate(['']);
+      }, 1000);
+    } else {
+      return
+    }
   }
 
   get isLoading() {
