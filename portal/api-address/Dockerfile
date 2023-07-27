@@ -7,4 +7,6 @@ COPY src src
 COPY package*.json ./
 RUN npm install --only=production
 
+EXPOSE 8000
+
 CMD ["node", "src/index.js"]
