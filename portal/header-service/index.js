@@ -1,6 +1,12 @@
 const path = require('path');
 const express = require('express')
 const app = express()
+const cors = require('cors');
+
+app.use(cors({
+    origin: ['http://api.paulahage.com'],
+    optionsSuccessStatus: 200
+}));
 
 app.get('/getHeader', (req, res) => {
     const token = req.header('Authorization')
