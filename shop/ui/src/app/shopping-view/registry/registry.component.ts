@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { postcodeValidator } from 'src/app/services/postcode.validator';
 
 import { ShoppingService } from 'src/app/services/shopping.service';
 
@@ -15,7 +16,7 @@ export class RegistryComponent {
 
   ngOnInit() {
     this.registryForm = new FormGroup({
-      postCode: new FormControl('', Validators.required),
+      postCode: new FormControl('', [Validators.required, postcodeValidator]),
       houseNumber: new FormControl('', Validators.required),
       addition: new FormControl(''),
     });
