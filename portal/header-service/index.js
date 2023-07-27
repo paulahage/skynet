@@ -13,7 +13,7 @@ app.get('/getHeader', (req, res) => {
     }
 
     try{
-        const staticFolderPath = path.join(__dirname, 'header-dist');
+        const staticFolderPath = path.join(__dirname, '.');
         app.use(express.static(staticFolderPath));
         res.sendFile(path.join(staticFolderPath, 'index.html'));
 
