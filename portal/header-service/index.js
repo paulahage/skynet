@@ -4,7 +4,7 @@ const app = express()
 const cors = require('cors');
 
 app.use(cors({
-    origin: ['http://api.paulahage.com'],
+    origin: ['http://api.paulahage.com:8000', 'http://api.paulahage.com:9000'],
     optionsSuccessStatus: 200
 }));
 
