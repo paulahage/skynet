@@ -13,6 +13,7 @@ app.get('/getHeader', (req, res) => {
     }
 
     try{
+        //test
         const staticFolderPath = path.join(__dirname, '.');
         app.use(express.static(staticFolderPath));
         res.sendFile(path.join(staticFolderPath, 'index.html'));
