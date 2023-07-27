@@ -8,4 +8,4 @@ COPY package*.json ./
 COPY header-dist ./
 RUN npm install --only=production
 
-CMD ["node", "src/index.js"]
+CMD ["node", "index.js"]

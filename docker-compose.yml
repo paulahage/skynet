@@ -1,0 +1,18 @@
+version: '3'
+services:
+  portal-api-address:
+    image: paulahage/api-address:main
+    ports:
+      - "8001:80"
+  portal-api-data-plans:
+    image: paulahage/api-data-plans:main
+    ports:
+      - "8002:80"
+  portal-header:
+    image: paulahage/portal-header:main
+    ports:
+      - "8003:80"
+  shop-ui:
+    image: paulahage/shop-ui:main
+    ports:
+      - "9000:80"
