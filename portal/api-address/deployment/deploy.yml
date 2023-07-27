@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-address-deployment
+  labels:
+    app: api-address
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-address
+  template:
+    metadata:
+      labels:
+        app: api-address
+    spec:
+      containers:
+        - name: blog
+          image: leonardiwagner/api-address:1
+          resources:
+            requests:
+              ephemeral-storage: "2G"
+              memory: "64M"
+              cpu: "0.05"
+            limits:
+              ephemeral-storage: "2G"
+              memory: "128M"
+              cpu: "0.1"
+          ports:
+            - containerPort: 80
