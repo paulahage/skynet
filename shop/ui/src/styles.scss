@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+$main-bg-color: #f1f2f3;
+$main-bg-color-overlay: #f1f2f375;
+$loading-bg: #f1f2f362;
+$text-color-light: rgb(13, 29, 39);
+$text-color-light-plus: #777a7c;
+$color-black: rgb(0, 0, 0);
+$color-white: rgb(255, 255, 255);
+$color-blue: #0d6efd;
+
+body {
+  background-color: $main-bg-color;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Standard */
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.container_disabled {
+  pointer-events: none;
+  position: relative;
+}
+
+.container_disabled::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $main-bg-color-overlay;
+  z-index: 10;
+}

@@ -1,0 +1,40 @@
+@import "../../styles.scss";
+
+.accordion-item {
+  border: none;
+}
+
+.accordion-button {
+  padding: 0;
+}
+
+.accordion-button:not(.collapsed) {
+  color: inherit;
+  background: transparent;
+  color: black;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0%);
+  padding: 0;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-body {
+  padding: 0;
+}
+
+.tag_discount {
+  font-size: 11px;
+  color: $color-blue;
+}
+
+.price_per_month {
+  color: $text-color-light-plus;
+}
