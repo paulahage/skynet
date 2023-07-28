@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ShoppingService } from '../services/shopping.service';
-import { InternetPackage } from '../models/internet-packs.model';
+import { InternetPlan } from '../models/internet-packs.model';
 import { internetInstallationHelp } from '../data/internet-packs';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent {
-  internetPackage!: InternetPackage;
+  internetPlan!: InternetPlan | null;
   subscription!: Subscription;
   internetInstallation = internetInstallationHelp;
 
@@ -24,7 +24,7 @@ export class ShoppingCartComponent {
 
   ngOnInit() {
     this.subscription = this.shoppingService.selectedPackage.subscribe(
-      (itPackage) => (this.internetPackage = itPackage!)
+      (itPackage) => (this.internetPlan = itPackage)
     );
   }
 
@@ -51,5 +51,9 @@ export class ShoppingCartComponent {
         relativeTo: this.route,
       });
     }, 1000);
+  }
+
+  ngOnDestroy() {
+    this.shoppingService.selectedPackage.unsubscribe();
   }
 }

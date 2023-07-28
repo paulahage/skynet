@@ -1,20 +1,20 @@
-<div [ngClass]="{ container_disabled: !isRegistryOk }">
+<div *ngIf="isRegistryOk">
   <h2 class="my-4">2. Choose your internet speed</h2>
   <p>
     With all our internet subscriptions you get stable, fast and secure internet
     that you can count on. On our powerful Giganet.
   </p>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let package of internetPackages">
-      <a style="cursor: pointer" (click)="selectPackage(package)">
+  <div class="row" *ngIf="internetPlans$ | async as internetPlans">
+    <div class="col-md-4" *ngFor="let plan of internetPlans">
+      <a style="cursor: pointer" (click)="selectPackage(plan)">
         <div
-          class="card card_container"
+          class="card mt-2 card_container"
           [ngClass]="{
-            'border border-primary border-2': isPackageSelected(package.id)
+            'border border-primary border-2': isPackageSelected(plan.id)
           }"
         >
           <div class="card-body">
-            <h5 class="card-title">{{ package.title }}</h5>
+            <h5 class="card-title">{{ plan.name }}</h5>
             <div
               class="progress my-3"
               role="progressbar"
@@ -24,10 +24,10 @@
               aria-valuemax="100"
               style="height: 8px"
             >
-              <div class="progress-bar" [style]="package.progress"></div>
+              <div class="progress-bar" [style]="getProgressBar(plan)"></div>
             </div>
             <ul>
-              <li *ngFor="let detail of package.details">
+              <li>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -40,7 +40,52 @@
                     d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
                   />
                 </svg>
-                {{ detail }}
+                {{ plan.download }} Mbit/s download
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="#0D6EFD"
+                  class="bi bi-check"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                  />
+                </svg>
+                {{ plan.upload }} Mbit/s download
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="#0D6EFD"
+                  class="bi bi-check"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                  />
+                </svg>
+                Internet security
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="#0D6EFD"
+                  class="bi bi-check"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                  />
+                </svg>
+                Installation help
               </li>
             </ul>
             <div class="row my-4 mx-2">
@@ -56,7 +101,7 @@
                   name="internetPlan"
                   aria-label="Choose your internet package"
                   style="cursor: pointer"
-                  [checked]="isPackageSelected(package.id)"
+                  [checked]="isPackageSelected(plan.id)"
                 />
               </div>
             </div>

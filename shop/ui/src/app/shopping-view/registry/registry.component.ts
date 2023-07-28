@@ -33,10 +33,7 @@ export class RegistryComponent {
     });
 
     this.registryForm.get('postcode')?.valueChanges.subscribe((postcode) => {
-      console.log('typing');
-
       if (this.registryForm.get('postcode')?.valid) {
-        console.log('inside if input');
         this.apiService.getAddress(postcode);
         this.shoppingService.isPersonalAddress = true;
         this.addressInfo$ = this.shoppingService.addressInfos;
@@ -48,9 +45,14 @@ export class RegistryComponent {
     this.shoppingService.registryInfos.next(this.registryForm.value);
     this.shoppingService.isLoading = true;
 
+    const postcode = this.registryForm.get('postcode')?.value;
+
     setTimeout(() => {
+      this.apiService.getPlans(postcode);
       this.shoppingService.isRegistryOk = true;
       this.shoppingService.isLoading = false;
+      this.shoppingService.isPersonalAddress = false;
+
       this.registryForm.reset();
     }, 2000);
   }
