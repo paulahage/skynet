@@ -3,7 +3,7 @@
     <div
       class="d-flex flex-row align-content-center justify-content-between my-3"
     >
-      <div class="d-flex flex-row align-content-center">
+      <div class="d-flex flex-row align-content-center" *ngIf="addressInfo$ | async as addressInfo">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -16,7 +16,8 @@
             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
           />
         </svg>
-        <p class="card-text ms-3">Zuidplein 444</p>
+        <p class="card-text ms-3" >{{addressInfo.street}}</p>
+        <p class="card-text ms-2" *ngIf="registryInfo$ | async as registryInfo">{{registryInfo.houseNumber}}</p>
       </div>
       <a style="cursor: pointer" (click)="changeAddress()"> Change </a>
     </div>

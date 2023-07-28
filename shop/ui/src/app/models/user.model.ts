@@ -9,6 +9,12 @@ export interface PersonalInformation {
 
 export interface RegistryInformation {
   addition?: string;
-  houseNumber: number;
+  houseNumber: number | null;
   postCode: string;
+}
+
+export interface AddressInformation {
+  street: string;
+  city: string;
+  country: string;
 }

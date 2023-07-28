@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { postcodeValidator } from 'src/app/services/postcode.validator';
+import { Observable } from 'rxjs';
 
+import { AddressInformation } from 'src/app/models/user.model';
+import { ApiService } from 'src/app/services/api.service';
+import { postcodeValidator } from 'src/app/services/postcode.validator';
 import { ShoppingService } from 'src/app/services/shopping.service';
 
 @Component({
@@ -11,24 +14,44 @@ import { ShoppingService } from 'src/app/services/shopping.service';
 })
 export class RegistryComponent {
   registryForm!: FormGroup;
+  addressInfo$!: Observable<AddressInformation | null>;
 
-  constructor(private shoppingService: ShoppingService) {}
+  constructor(
+    private shoppingService: ShoppingService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit() {
     this.registryForm = new FormGroup({
-      postCode: new FormControl('', [Validators.required, postcodeValidator]),
+      postcode: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(5),
+        postcodeValidator,
+      ]),
       houseNumber: new FormControl('', Validators.required),
       addition: new FormControl(''),
+    });
+
+    this.registryForm.get('postcode')?.valueChanges.subscribe((postcode) => {
+      console.log('typing');
+
+      if (this.registryForm.get('postcode')?.valid) {
+        console.log('inside if input');
+        this.apiService.getAddress(postcode);
+        this.shoppingService.isPersonalAddress = true;
+        this.addressInfo$ = this.shoppingService.addressInfos;
+      }
     });
   }
 
   onSubmit() {
     this.shoppingService.registryInfos.next(this.registryForm.value);
     this.shoppingService.isLoading = true;
+
     setTimeout(() => {
       this.shoppingService.isRegistryOk = true;
-      this.registryForm.reset();
       this.shoppingService.isLoading = false;
+      this.registryForm.reset();
     }, 2000);
   }
 
@@ -38,5 +61,9 @@ export class RegistryComponent {
 
   get isLoading() {
     return this.shoppingService.isLoading;
+  }
+
+  get isPersonalAddress() {
+    return this.shoppingService.isPersonalAddress;
   }
 }

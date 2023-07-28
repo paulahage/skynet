@@ -11,7 +11,7 @@ public class ApiController {
     public ApiResponse getAddressClass(@RequestParam("postcode") String postcode){
         if(isValidPostcode(postcode)){
             Address address = new Address();
-            address.setStreet("Zuidplein 444");
+            address.setStreet("Zuidplein");
             address.setCity("Rotterdam");
             address.setCountry("Netherlands");
 

@@ -14,6 +14,7 @@ import { RegistryConfirmComponent } from './registry/registry-confirm/registry-c
 import { RegistryComponent } from './registry/registry.component';
 import { ShoppingViewComponent } from './shopping-view.component';
 import { ShoppingViewRoutingModule } from './shopping-view-routing.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
