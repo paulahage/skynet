@@ -2,17 +2,9 @@
   "name": "header-service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build-ui": "cd ../header-ui && npm run build && cd ../header-service",
     "copy-ui": "cp -r ../header-ui/build ./header-dist",
     "build": "npm run build-ui && npm run copy-ui"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2"
   }
 }

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root2'));
+const root = ReactDOM.createRoot(document.getElementById('skynet-header'));
 root.render(
     <App />
  

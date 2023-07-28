@@ -1,21 +1,6 @@
-import { useEffect, useState } from "react"
 const App = () => {
-    const [header, setHeader] = useState()
-    useEffect(() => {
-
-        fetch('http://api.paulahage.com:8003/getHeader', {
-            headers: {
-                'Authorization': `Bearer 39c7c6c1-3000-495a-a9c4-e13510a75f2e`
-            }
-        }).then((response) => response.text())
-        .then((text) => {
-            setHeader(text)
-        })
-
-    }, [])
 
     return <div>
-        <div class="header" dangerouslySetInnerHTML={{ __html: header }} />
     <div class="banner">
       <div class="banner__picture"></div>
       

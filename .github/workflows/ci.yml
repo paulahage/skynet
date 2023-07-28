@@ -43,21 +43,6 @@ jobs:
           tags: paulahage/api-data-plans:main
           push: true
 
-      - name: Build Portal Header UI
-        working-directory: portal/header-ui
-        run: npm ci && npm run build
-
-      - name: Build Portal Header Service
-        working-directory: portal/header-service
-        run: npm ci && npm run build
-
-      - name: Build and Deploy Portal Header Service
-        uses: docker/build-push-action@v4
-        with:
-          context: portal/header-service
-          tags: paulahage/header-service:main
-          push: true
-
       - name: Build Portal Website
         working-directory: portal/website
         run: npm ci && npm run build
