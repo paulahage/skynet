@@ -23,7 +23,7 @@ export class RegistryComponent {
 
   ngOnInit() {
     this.registryForm = new FormGroup({
-      postcode: new FormControl('', [
+      postCode: new FormControl('', [
         Validators.required,
         Validators.maxLength(5),
         postcodeValidator,
@@ -32,11 +32,13 @@ export class RegistryComponent {
       addition: new FormControl(''),
     });
 
-    this.registryForm.get('postcode')?.valueChanges.subscribe((postcode) => {
-      if (this.registryForm.get('postcode')?.valid) {
+    this.registryForm.get('postCode')?.valueChanges.subscribe((postcode) => {
+      if (this.registryForm.get('postCode')?.valid) {
         this.apiService.getAddress(postcode);
         this.shoppingService.isPersonalAddress = true;
         this.addressInfo$ = this.shoppingService.addressInfos;
+      } else {
+        this.shoppingService.isPersonalAddress = false;
       }
     });
   }
@@ -45,7 +47,7 @@ export class RegistryComponent {
     this.shoppingService.registryInfos.next(this.registryForm.value);
     this.shoppingService.isLoading = true;
 
-    const postcode = this.registryForm.get('postcode')?.value;
+    const postcode = this.registryForm.get('postCode')?.value;
 
     setTimeout(() => {
       this.apiService.getPlans(postcode);

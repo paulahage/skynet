@@ -32,7 +32,6 @@ export class ApiService {
       .get<InternetPlan[]>(this.apiPlansUrl, { params })
       .subscribe((plans: InternetPlan[]) => {
         this.shoppingService.internetPlanInfos.next(plans);
-        console.log('internet plans', plans);
       }),
       (error: any) => this.shoppingService.internetPlanInfos.next([]);
   }
