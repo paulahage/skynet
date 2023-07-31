@@ -26,6 +26,7 @@ export class RegistryComponent {
       postCode: new FormControl('', [
         Validators.required,
         Validators.maxLength(5),
+        Validators.minLength(5),
         postcodeValidator,
       ]),
       houseNumber: new FormControl('', Validators.required),
