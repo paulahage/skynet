@@ -37,6 +37,7 @@ export class ConfirmDataComponent {
       postCode: new FormControl(this.registryInfo?.postCode, [
         Validators.required,
         Validators.maxLength(5),
+        Validators.minLength(5),
         postcodeValidator,
       ]),
       houseNumber: new FormControl(
