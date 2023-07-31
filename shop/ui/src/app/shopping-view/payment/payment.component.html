@@ -2,14 +2,17 @@
   <div class="card-body">
     <form [formGroup]="paymentForm" (ngSubmit)="onPayment()">
       <h5>Payment details</h5>
-      <div class="row mt-3">
-        <div class="input-group mb-3">
+      <div class="row mt-4">
+        <div class="input-group">
           <div class="form-floating">
             <input
-              type="number"
+              type="text"
               class="form-control"
               id="cardNumber"
+              aria-describedby="creditCardHelpBlock"
               formControlName="cardNumber"
+              appCardNumberFormatter
+              [class.is-invalid]="cardNumber?.invalid && cardNumber?.touched"
             />
             <label for="cardNumber">CARD NUMBER</label>
           </div>
@@ -31,34 +34,47 @@
             </svg>
           </span>
         </div>
+        <p class="form-text helper_text">Credit Card must be 16 digits.</p>
       </div>
-      <div class="row mt-3">
+
+      <div class="row mb-4">
         <div class="col mt-2">
           <div class="form-floating">
             <input
-              type="month"
+              type="text"
               class="form-control"
               id="expirationDate"
+              appExpirationDateFormatter
               formControlName="expirationDate"
             />
-            <label for="expirationDate" class="form-label"
-              >EXPIRATION DATE</label
-            >
+            <label for="expirationDate" class="form-label">EXPIRATION DATE</label>
           </div>
         </div>
         <div class="col mt-2">
           <div class="form-floating">
             <input
-              type="number"
+              type="text"
               class="form-control"
-              id="cvCode"
-              formControlName="cvCode"
+              id="cvvCode"
+              formControlName="cvvCode"
+              [class.is-invalid]="cvvCode?.invalid && cvvCode?.touched"
             />
-            <label for="cvCode" class="form-label">CV CODE</label>
+            <label for="cvvCode" class="form-label">CVV</label>
+            <div
+              *ngIf="cvvCode?.invalid && cvvCode?.touched"
+              class="invalid-feedback"
+            >
+              <div *ngIf="cvvCode?.errors?.['minlength']">
+                CVV must have 3 digits.
+              </div>
+              <div *ngIf="cvvCode?.errors?.['maxlength']">
+                CVV must be at most 3 digits.
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="rol mt-3">
+      <div class="row mb-3">
         <div class="col mt-2">
           <div class="form-floating">
             <input

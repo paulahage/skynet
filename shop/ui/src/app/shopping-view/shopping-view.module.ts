@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { LoadingComponent } from '../loading/loading.component';
@@ -14,7 +14,8 @@ import { RegistryConfirmComponent } from './registry/registry-confirm/registry-c
 import { RegistryComponent } from './registry/registry.component';
 import { ShoppingViewComponent } from './shopping-view.component';
 import { ShoppingViewRoutingModule } from './shopping-view-routing.module';
-import { HttpClient } from '@angular/common/http';
+import { CardNumberFormatterDirective } from '../directives/card-number-formatter.directive';
+import { ExpirationDateFormatterDirective } from '../directives/expiration-date-formatter.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,15 @@ import { HttpClient } from '@angular/common/http';
     PaymentComponent,
     PaymentErrorComponent,
     PaymentSuccessComponent,
+    CardNumberFormatterDirective,
+    ExpirationDateFormatterDirective,
   ],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, ShoppingViewRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    ShoppingViewRoutingModule,
+  ],
 })
 export class ShoppingViewModule {}

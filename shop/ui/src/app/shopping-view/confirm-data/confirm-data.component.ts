@@ -46,7 +46,7 @@ export class ConfirmDataComponent {
       ),
       addition: new FormControl(this.registryInfo?.addition),
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', Validators.required),
     });
 

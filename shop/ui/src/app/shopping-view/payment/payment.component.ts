@@ -21,17 +21,34 @@ export class PaymentComponent {
 
   ngOnInit() {
     this.paymentForm = new FormGroup({
-      cardNumber: new FormControl('', Validators.required),
+      cardNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.maxLength(16),
+        Validators.minLength(16),
+      ]),
       expirationDate: new FormControl('', Validators.required),
-      cvCode: new FormControl(null, Validators.required),
+      cvvCode: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
       cardHolder: new FormControl('', Validators.required),
     });
 
     this.isPaymentFailed = this.shoppingService.isPaymentFailed;
+
+    this.paymentForm.valueChanges.subscribe((value) => console.log(value));
+    this.paymentForm
+      .get('cvvCode')
+      ?.statusChanges.subscribe((status) => console.log('cvv status', status));
+    this.paymentForm
+      .get('cardNumber')
+      ?.statusChanges.subscribe((status) => console.log('card status', status));
   }
 
   onPayment() {
-
     if (!this.isPaymentFailed) {
       this.shoppingService.isLoading = true;
       setTimeout(() => {
@@ -50,5 +67,13 @@ export class PaymentComponent {
 
   get isLoading() {
     return this.shoppingService.isLoading;
+  }
+
+  get cardNumber() {
+    return this.paymentForm.get('cardNumber');
+  }
+
+  get cvvCode() {
+    return this.paymentForm.get('cvvCode');
   }
 }
