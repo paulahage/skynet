@@ -54,6 +54,6 @@ export class ShoppingCartComponent {
   }
 
   ngOnDestroy() {
-    this.shoppingService.selectedPackage.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

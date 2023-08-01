@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { dateValidator } from 'src/app/services/date.validator';
 
 import { ShoppingService } from 'src/app/services/shopping.service';
 
@@ -27,7 +28,12 @@ export class PaymentComponent {
         Validators.maxLength(16),
         Validators.minLength(16),
       ]),
-      expirationDate: new FormControl('', Validators.required),
+      expirationDate: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(4),
+        dateValidator
+      ]),
       cvvCode: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[0-9]+$/),
@@ -39,13 +45,9 @@ export class PaymentComponent {
 
     this.isPaymentFailed = this.shoppingService.isPaymentFailed;
 
-    this.paymentForm.valueChanges.subscribe((value) => console.log(value));
     this.paymentForm
-      .get('cvvCode')
-      ?.statusChanges.subscribe((status) => console.log('cvv status', status));
-    this.paymentForm
-      .get('cardNumber')
-      ?.statusChanges.subscribe((status) => console.log('card status', status));
+      .get('expirationDate')
+      ?.statusChanges.subscribe((value) => console.log('date value', value));
   }
 
   onPayment() {
@@ -75,5 +77,13 @@ export class PaymentComponent {
 
   get cvvCode() {
     return this.paymentForm.get('cvvCode');
+  }
+
+  get expirationDate() {
+    return this.paymentForm.get('expirationDate');
+  }
+
+  get cardHolder() {
+    return this.paymentForm.get('cardHolder');
   }
 }

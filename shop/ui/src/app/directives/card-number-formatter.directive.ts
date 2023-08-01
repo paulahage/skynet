@@ -44,6 +44,14 @@ export class CardNumberFormatterDirective implements ControlValueAccessor {
     this.onTouch();
   }
 
+  @HostListener('blur', ['$event.target.value']) onBlur(value: string): void {
+    if (!value) {
+      this.element.nativeElement.value = '';
+      this.onChange(null);
+      this.onTouch();
+    }
+  }
+
   private formatCardNumber(value: string): string {
     const groups = value.match(/.{1,4}/g); //Split the numeric value into groups of four characters
     return groups ? groups.join(' ') : '';

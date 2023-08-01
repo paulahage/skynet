@@ -46,8 +46,17 @@
               id="expirationDate"
               appExpirationDateFormatter
               formControlName="expirationDate"
+              [class.is-invalid]="expirationDate?.invalid && expirationDate?.touched"
             />
             <label for="expirationDate" class="form-label">EXPIRATION DATE</label>
+            <div *ngIf="expirationDate?.invalid && expirationDate?.touched" class="invalid-feedback">
+              <div *ngIf="expirationDate?.errors?.['invalidYear']">
+                Expiration year is invalid
+              </div>
+              <div *ngIf="expirationDate?.errors?.['invalidMonth']">
+                Expiration month is invalid
+              </div>
+            </div>
           </div>
         </div>
         <div class="col mt-2">
@@ -82,6 +91,7 @@
               class="form-control"
               id="cardHolder"
               formControlName="cardHolder"
+              [class.is-invalid]="cardHolder?.invalid && cardHolder?.touched"
             />
             <label for="cardHolder">CARD OWNER</label>
           </div>

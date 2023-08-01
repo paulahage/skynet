@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appExpirationDateFormatter]',
@@ -39,13 +39,22 @@ export class ExpirationDateFormatterDirective implements ControlValueAccessor{
   constructor(private element: ElementRef<HTMLInputElement>) { }
 
   @HostListener('input', ['$event.target.value']) onInput(value: string): void {
-    const expirationDate = value.replace(/\D/g, ''); //Remove non-numeric characters
+    const expirationDate = value.replace(/\D/g, '').slice(0,4); //Remove non-numeric characters
     this.onChange(expirationDate);
     this.element.nativeElement.value = this.formatExpirationDate(expirationDate);
+    this.onTouch();
+  }
+
+  @HostListener('blur', ['$event.target.value']) onBlur(value: string): void {
+    if (!value) {
+      this.element.nativeElement.value = '';
+      this.onChange(null);
       this.onTouch();
+    }
   }
 
   private formatExpirationDate(value: string): string{
+    const date = value.slice()
     const month = value.substring(0, 2);
     const year = value.substring(2, 4);
     return `${month}/${year}`
