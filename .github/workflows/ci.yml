@@ -42,6 +42,17 @@ jobs:
           context: portal/api-data-plans
           tags: paulahage/api-data-plans:main
           push: true
+
+      - name: Build Portal Website
+        working-directory: portal/website
+        run: npm ci && npm run build
+        
+      - name: Deploy Portal Website
+        uses: docker/build-push-action@v4
+        with:
+          context: portal/website
+          tags: paulahage/portal-website:main
+          push: true
           
       - name: Build Shop UI
         working-directory: shop/ui

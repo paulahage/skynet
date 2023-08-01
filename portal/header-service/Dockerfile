@@ -1,11 +1,7 @@
-FROM node:20-alpine
-WORKDIR /app
+FROM nginx:1.25-alpine
 
-ENV APP_SECRET_TOKEN="39c7c6c1-3000-495a-a9c4-e13510a75f2e"
+COPY ./header-dist /usr/share/nginx/html
 
-COPY index.js ./
-COPY package*.json ./
-COPY header-dist ./
-RUN npm install --only=production
+EXPOSE 80
 
-CMD ["node", "src/index.js"]
+CMD ["nginx", "-g", "daemon off;"]
