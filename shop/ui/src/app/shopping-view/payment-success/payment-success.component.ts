@@ -16,6 +16,8 @@ export class PaymentSuccessComponent {
 
   redirectHomePage() {
     this.shoppingService.isLoading = true;
+    this.shoppingService.internetPlanInfos.next([]);
+
     setTimeout(() => {
       this.shoppingService.isLoading = false;
       this.shoppingService.isPaymentSuccess = false;
@@ -24,7 +26,7 @@ export class PaymentSuccessComponent {
       this.shoppingService.isConfirmPersonalData = false;
 
       this.router.navigate([''], { relativeTo: this.route });
-    }, 1000);
+    }, 2000);
   }
 
   get isLoading() {

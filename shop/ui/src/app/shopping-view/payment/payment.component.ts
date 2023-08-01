@@ -44,10 +44,6 @@ export class PaymentComponent {
     });
 
     this.isPaymentFailed = this.shoppingService.isPaymentFailed;
-
-    this.paymentForm
-      .get('expirationDate')
-      ?.statusChanges.subscribe((value) => console.log('date value', value));
   }
 
   onPayment() {
