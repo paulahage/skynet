@@ -6,7 +6,7 @@ const App = () => {
       
       <div class="banner__text">
         <span>The best deal is here</span>
-        <a class="banner__button" href="/">
+        <a class="banner__button" href="/plans">
           Buy a plan
         </a>
       </div>

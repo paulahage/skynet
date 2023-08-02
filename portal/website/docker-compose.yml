@@ -4,3 +4,11 @@ services:
     build: ../header-service
     ports:
       - "3001:80"
+  website:
+    build: ../website
+    ports:
+      - "3000:80"
+  site:
+    build: ../../shop/ui
+    ports:
+      - "3002:80"
