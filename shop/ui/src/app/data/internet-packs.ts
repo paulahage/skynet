@@ -1,7 +1,7 @@
 export const packages = [
   {
-    id: 1,
-    title: 'Start',
+    id: "1",
+    name: 'Start',
     progress: 'width: 18%',
     details: [
       '100 Mbit/s download',
@@ -13,8 +13,8 @@ export const packages = [
     price: '23,90',
   },
   {
-    id: 2,
-    title: 'Launch XXL',
+    id: "2",
+    name: 'Launch XXL',
     progress: 'width: 30%',
     details: [
       '200 Mbit/s download',
@@ -26,8 +26,8 @@ export const packages = [
     price: '30,90',
   },
   {
-    id: 3,
-    title: 'Complete',
+    id: "3",
+    name: 'Complete',
     progress: 'width: 43%',
     details: [
       '400 Mbit/s download',

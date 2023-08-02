@@ -3,7 +3,10 @@
     <div
       class="d-flex flex-row align-content-center justify-content-between my-3"
     >
-      <div class="d-flex flex-row align-content-center">
+      <div
+        class="d-flex flex-row align-content-center"
+        *ngIf="addressInfo$ | async as addressInfo"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -16,7 +19,10 @@
             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
           />
         </svg>
-        <p class="card-text ms-3">Zuidplein 444</p>
+        <p class="card-text ms-3">{{ addressInfo.street }}</p>
+        <p class="card-text ms-2" *ngIf="registryInfo$ | async as registryInfo">
+          {{ registryInfo.houseNumber }}
+        </p>
       </div>
       <a style="cursor: pointer" (click)="changeAddress()"> Change </a>
     </div>
@@ -37,9 +43,13 @@
       <div class="ms-3 vstack gap-3">
         <h5 class="card-title">Yes! Skynet is available</h5>
         <p class="card-text">
-          At your address, a download speed of up to <span>1000 Mbit/s</span> is
-          achievable via Skynet's <span>fiber optic cable network.</span> With
-          us you are already ready for the future.
+          At your address, a download speed of up to
+          <span *ngIf="maxInternet$ | async as internet">{{
+            internet.download
+          }}</span>
+          <span> Mbit/s</span> is achievable via Skynet's
+          <span>fiber optic cable network.</span> With us you are already ready
+          for the future.
         </p>
       </div>
     </div>

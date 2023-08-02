@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { dateValidator } from 'src/app/services/date.validator';
 
 import { ShoppingService } from 'src/app/services/shopping.service';
 
@@ -21,9 +22,24 @@ export class PaymentComponent {
 
   ngOnInit() {
     this.paymentForm = new FormGroup({
-      cardNumber: new FormControl('', Validators.required),
-      expirationDate: new FormControl('', Validators.required),
-      cvCode: new FormControl(null, Validators.required),
+      cardNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.maxLength(16),
+        Validators.minLength(16),
+      ]),
+      expirationDate: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(4),
+        dateValidator
+      ]),
+      cvvCode: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
       cardHolder: new FormControl('', Validators.required),
     });
 
@@ -31,7 +47,6 @@ export class PaymentComponent {
   }
 
   onPayment() {
-
     if (!this.isPaymentFailed) {
       this.shoppingService.isLoading = true;
       setTimeout(() => {
@@ -50,5 +65,21 @@ export class PaymentComponent {
 
   get isLoading() {
     return this.shoppingService.isLoading;
+  }
+
+  get cardNumber() {
+    return this.paymentForm.get('cardNumber');
+  }
+
+  get cvvCode() {
+    return this.paymentForm.get('cvvCode');
+  }
+
+  get expirationDate() {
+    return this.paymentForm.get('expirationDate');
+  }
+
+  get cardHolder() {
+    return this.paymentForm.get('cardHolder');
   }
 }
