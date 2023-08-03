@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/api/wiremock/address"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "[{ \"street\": \"Barão de Limeira\",\"city\": \"Sao Paulo\", \"country\": \"Brasil\" }]"
+      }
+    }
+  ]
+}

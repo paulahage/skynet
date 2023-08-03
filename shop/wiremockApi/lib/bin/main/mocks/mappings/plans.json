@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/api/wiremock/plans"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "[{ \"id\": \"01\",\"name\": \"Small\", \"download\": \"10\", \"upload\": \"10\", \"price\": \"40.00\" },{ \"id\": \"02\",\"name\": \"Medium\", \"download\": \"20\", \"upload\": \"20\", \"price\": \"60.00\" }]"
+      }
+    }
+  ]
+}
