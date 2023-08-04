@@ -53,7 +53,7 @@ jobs:
           push: true
       - name: Build Shop API
         working-directory: shop/api
-        run: ./gradlew build
+        run: chmod +x gradlew && ./gradlew build
       - name: Deploy Shop API
         uses: docker/build-push-action@v4
         with:
