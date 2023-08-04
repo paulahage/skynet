@@ -8,8 +8,8 @@ import { InternetPlan } from '../models/internet-packs.model';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiAddressUrl = 'http://localhost:8080/getAddress';
-  private apiPlansUrl = 'http://localhost:8080/getPlans';
+  private apiAddressUrl = 'http://localhost:80/getAddress';
+  private apiPlansUrl = 'http://localhost:80/getPlans';
 
   constructor(
     private http: HttpClient,

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { ShoppingService } from '../services/shopping.service';
 import { InternetPlan } from '../models/internet-packs.model';
-import { internetInstallationHelp } from '../data/internet-packs';
+import { internetBenefits } from '../ui-data/internet-benefits';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,7 +14,7 @@ import { internetInstallationHelp } from '../data/internet-packs';
 export class ShoppingCartComponent {
   internetPlan!: InternetPlan | null;
   subscription!: Subscription;
-  internetInstallation = internetInstallationHelp;
+  internetBenefits = internetBenefits;
 
   constructor(
     private shoppingService: ShoppingService,

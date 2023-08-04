@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { packages } from '../../data/internet-packs';
 import { ShoppingService } from 'src/app/services/shopping.service';
 import { InternetPlan } from 'src/app/models/internet-packs.model';
 @Component({
@@ -10,7 +9,6 @@ import { InternetPlan } from 'src/app/models/internet-packs.model';
   styleUrls: ['./internet-plans.component.scss'],
 })
 export class InternetPlansComponent {
-  internetPackages = packages;
   selectedPackageId: string | null = null;
   internetPlans$!: Observable<InternetPlan[]>;
   subscription!: Subscription;
