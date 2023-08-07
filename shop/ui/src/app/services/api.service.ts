@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ShoppingService } from './shopping.service';
+
 import { AddressInformation } from '../models/user.model';
 import { InternetPlan } from '../models/internet-packs.model';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private apiAddressUrl = 'http://localhost:80/getAddress';
-  private apiPlansUrl = 'http://localhost:80/getPlans';
+  private apiAddressUrl = environment.apiAddressUrl;
+  private apiPlansUrl = environment.apiPlansUrl;
+  private addressEndpoint: string = 'getAddress';
+  private internetPlansEndpoint: string = 'getPlans';
 
   constructor(
     private http: HttpClient,
@@ -19,7 +24,7 @@ export class ApiService {
   getAddress(postcode: string): void {
     const params = new HttpParams().set('postcode', postcode);
     this.http
-      .get<AddressInformation>(this.apiAddressUrl, { params })
+      .get<AddressInformation>(`${this.apiAddressUrl}${this.addressEndpoint}`, { params })
       .subscribe((ad: AddressInformation) =>
         this.shoppingService.addressInfos.next(ad)
       ),
@@ -29,7 +34,7 @@ export class ApiService {
   getPlans(postcode: string): void {
     const params = new HttpParams().set('postcode', postcode);
     this.http
-      .get<InternetPlan[]>(this.apiPlansUrl, { params })
+      .get<InternetPlan[]>(`${this.apiPlansUrl}${this.internetPlansEndpoint}`, { params })
       .subscribe((plans: InternetPlan[]) => {
         this.shoppingService.internetPlanInfos.next(plans);
       }),
