@@ -2,9 +2,7 @@ package com.skynet.shopapi;
 
 public class DataPlans implements ApiResponse{
     private String id;
-
     private String name;
-
     private String download;
     private String upload;
     private String price;
