@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   name: 'production',
-  apiAddressUrl: 'http://portal-api-address/',
-  apiPlansUrl: 'http://portal-api-data-plans/',
+  apiAddressUrl: 'http://api.paulahage.com:8004/',
+  apiPlansUrl: 'http://api.paulahage.com:8004/',
 };
