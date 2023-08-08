@@ -2,7 +2,7 @@ package com.skynet.shopapi;
 
 public interface ApiService {
 
-  Address getAddressClass(String postcode);
+  Address getAddress(String postcode);
 
-  DataPlans[] getDataPlansClass(String postcode);
+  DataPlans[] getDataPlans(String postcode);
 }

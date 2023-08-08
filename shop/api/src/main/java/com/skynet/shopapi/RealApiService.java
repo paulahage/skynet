@@ -21,7 +21,7 @@ public class RealApiService implements ApiService {
   }
 
   @Override
-  public Address getAddressClass(String postcode) {
+  public Address getAddress(String postcode) {
     String getAddressUrl = apiAddressBaseUrl + "getAddress?postcode=" + postcode;
     System.out.println(getAddressUrl);
     Address address = restTemplate.getForObject(getAddressUrl, Address.class);
@@ -29,7 +29,7 @@ public class RealApiService implements ApiService {
   }
 
   @Override
-  public DataPlans[] getDataPlansClass(String postcode) {
+  public DataPlans[] getDataPlans(String postcode) {
     String getDataPlansUrl = apiDataPlansBaseUrl + "getPlans?postcode=" + postcode;
     DataPlans[] dataPlansList = restTemplate.getForObject(getDataPlansUrl, DataPlans[].class);
     return dataPlansList;

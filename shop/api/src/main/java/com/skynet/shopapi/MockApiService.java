@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 public class MockApiService implements ApiService {
 
   @Override
-  public Address getAddressClass(String postcode) {
+  public Address getAddress(String postcode) {
     if (isValidPostcode(postcode)) {
       Address address = new Address();
       address.setStreet("Zuidplein");
@@ -22,7 +22,7 @@ public class MockApiService implements ApiService {
   }
 
   @Override
-  public DataPlans[] getDataPlansClass(String postcode) {
+  public DataPlans[] getDataPlans(String postcode) {
     if (isValidPostcode(postcode)) {
       DataPlans dataPlans1 = new DataPlans();
       dataPlans1.setId("01");

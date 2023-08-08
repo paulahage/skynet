@@ -16,12 +16,12 @@ public class ApiController {
     }
 
     @GetMapping("/getAddress")
-    public Address getAddressClass(@RequestParam("postcode") String postcode) {
-        return apiService.getAddressClass(postcode);
+    public Address getAddress(@RequestParam("postcode") String postcode) {
+        return apiService.getAddress(postcode);
     }
 
     @GetMapping("/getPlans")
-    public DataPlans[] getDataPlansClass(@RequestParam("postcode") String postcode){
-        return apiService.getDataPlansClass(postcode);
+    public DataPlans[] getDataPlans(@RequestParam("postcode") String postcode){
+        return apiService.getDataPlans(postcode);
     }
 }
